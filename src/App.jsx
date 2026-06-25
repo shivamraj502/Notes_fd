@@ -15,22 +15,22 @@ function App() {
   const [note, setNote] = useState("");
   const [notes, setNotes] = useState([]);
 
-  // Fetch all notes from backend
+  
   const fetchNotes = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/notes");
+      const res = await axios.get("https://notes-943e.onrender.com/notes");
       setNotes(res.data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  // Add note to backend
+  
   const addNote = async () => {
     if (!note.trim()) return;
 
     try {
-      await axios.post("http://localhost:5000/notes", {
+      await axios.post("https://notes-943e.onrender.com/notes", {
         title: note
       });
 
@@ -41,10 +41,10 @@ function App() {
     }
   };
 
-  // Delete note from backend
+
   const deleteNote = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/notes/${id}`);
+      await axios.delete(`https://notes-943e.onrender.com/notes/${id}`);
       fetchNotes();
     } catch (error) {
       console.log(error);
