@@ -15,7 +15,6 @@ function App() {
   const [note, setNote] = useState("");
   const [notes, setNotes] = useState([]);
 
-  
   const fetchNotes = async () => {
     try {
       const res = await axios.get("https://notes-943e.onrender.com/notes");
