@@ -15,6 +15,7 @@ function App() {
   const [note, setNote] = useState("");
   const [notes, setNotes] = useState([]);
 
+  // Fetch all notes from backend
   const fetchNotes = async () => {
     try {
       const res = await axios.get("https://notes-943e.onrender.com/notes");
@@ -24,7 +25,7 @@ function App() {
     }
   };
 
-  
+  // Add note to backend
   const addNote = async () => {
     if (!note.trim()) return;
 
@@ -40,7 +41,7 @@ function App() {
     }
   };
 
-
+  // Delete note from backend
   const deleteNote = async (id) => {
     try {
       await axios.delete(`https://notes-943e.onrender.com/notes/${id}`);
