@@ -19,6 +19,7 @@ function App() {
   const fetchNotes = async () => {
     try {
       const res = await axios.get("https://notes-943e.onrender.com/notes");
+      // const res = await axios.get("http://localhost:5000/notes");
       setNotes(res.data);
     } catch (error) {
       console.log(error);
@@ -33,6 +34,10 @@ function App() {
       await axios.post("https://notes-943e.onrender.com/notes", {
         title: note
       });
+    // try {
+    //   await axios.post("http://localhost:5000/notes", {
+    //      title: note 
+    //     });
 
       setNote("");
       fetchNotes();
@@ -45,6 +50,7 @@ function App() {
   const deleteNote = async (id) => {
     try {
       await axios.delete(`https://notes-943e.onrender.com/notes/${id}`);
+      // await axios.delete(`http://localhost:5000/notes/${id}`);
       fetchNotes();
     } catch (error) {
       console.log(error);
