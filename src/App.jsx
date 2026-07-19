@@ -68,7 +68,7 @@ function App() {
       <input
         value={note}
         onChange={(e) => setNote(e.target.value)}
-        placeholder="Enter noteS"
+        placeholder="Enter notes"
       />
 
       <button onClick={addNote}>Add</button>
