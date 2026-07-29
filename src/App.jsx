@@ -24,8 +24,8 @@ import axios from "axios";
 import "./App.css";
 import Login from "./Login";
 
-// const API = "https://notes-943e.onrender.com";
-const API = "http://localhost:5000";
+const API = "https://notes-943e.onrender.com";
+// const API = "http://localhost:5000";
 
 function App() {
   const [note, setNote] = useState("");
