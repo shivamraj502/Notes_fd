@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #16171d;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+.app {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 24px;
+  color: #f3f4f6;
+}
+
+.app-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+  color: #f3f4f6;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.note-input {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #2e303a;
+  background: #1f2028;
+  color: #f3f4f6;
+  outline: none;
+}
+
+.note-input:focus {
+  border-color: #c084fc;
+}
+
+.add-btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #c084fc;
+  color: #16171d;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.add-btn:hover {
+  opacity: 0.85;
+}
+
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.note-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: #1f2028;
+  border: 1px solid #2e303a;
+}
+
+.note-text {
+  word-break: break-word;
+  text-align: left;
+}
+
+.delete-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #ff5c5c;
+  color: white;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover {
+  opacity: 0.85;
+}

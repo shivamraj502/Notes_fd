@@ -8,8 +8,20 @@ Deploy live
  */
 
 
+/**
+Now flow is:
+Frontend (React)
+   ↓
+Axios
+   ↓
+Backend (Node)
+   ↓
+MongoDB Atlas
+ */
+
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./App.css";
 
 function App() {
   const [note, setNote] = useState("");
@@ -62,39 +74,31 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Notes App</h1>
+    <div className="app">
+      <h1 className="app-title">Notes App</h1>
 
-      <input
-        value={note}
-        onChange={(e) => setNote(e.target.value)}
-        placeholder="Enter notes"
-      />
+      <div className="input-row">
+        <input
+          className="note-input"
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+          placeholder="Enter notes"
+        />
+        <button className="add-btn" onClick={addNote}>Add</button>
+      </div>
 
-      <button onClick={addNote}>Add</button>
-
-      {notes.map((item) => (
-        <div key={item._id}>
-          {item.title}
-          <button onClick={() => deleteNote(item._id)}>
-            Delete
-          </button>
-        </div>
-      ))}
+      <div className="notes-list">
+        {notes.map((item) => (
+          <div className="note-card" key={item._id}>
+            <span className="note-text">{item.title}</span>
+            <button className="delete-btn" onClick={() => deleteNote(item._id)}>
+              Delete
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
 
 export default App;
-
-
-/**
-Now flow is:
-Frontend (React)
-   ↓
-Axios
-   ↓
-Backend (Node)
-   ↓
-MongoDB Atlas
- */
