@@ -22,35 +22,35 @@ MongoDB Atlas
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import Login from "./Login";
+
+// const API = "https://notes-943e.onrender.com";
+const API = "http://localhost:5000";
 
 function App() {
   const [note, setNote] = useState("");
   const [notes, setNotes] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
-  // Fetch all notes from backend
+  // Helper to build auth header
+  const authHeader = () => ({
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+  });
+
   const fetchNotes = async () => {
     try {
-      const res = await axios.get("https://notes-943e.onrender.com/notes");
-      // const res = await axios.get("http://localhost:5000/notes");
+      const res = await axios.get(`${API}/notes`, authHeader());
       setNotes(res.data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  // Add note to backend
   const addNote = async () => {
     if (!note.trim()) return;
 
     try {
-      await axios.post("https://notes-943e.onrender.com/notes", {
-        title: note
-      });
-    // try {
-    //   await axios.post("http://localhost:5000/notes", {
-    //      title: note 
-    //     });
-
+      await axios.post(`${API}/notes`, { title: note }, authHeader());
       setNote("");
       fetchNotes();
     } catch (error) {
@@ -58,24 +58,37 @@ function App() {
     }
   };
 
-  // Delete note from backend
   const deleteNote = async (id) => {
     try {
-      await axios.delete(`https://notes-943e.onrender.com/notes/${id}`);
-      // await axios.delete(`http://localhost:5000/notes/${id}`);
+      await axios.delete(`${API}/notes/${id}`, authHeader());
       fetchNotes();
     } catch (error) {
       console.log(error);
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    setNotes([]);
+  };
+
   useEffect(() => {
-    fetchNotes();
-  }, []);
+    if (isLoggedIn) {
+      fetchNotes();
+    }
+  }, [isLoggedIn]);
+
+  if (!isLoggedIn) {
+    return <Login onLogin={() => setIsLoggedIn(true)} />;
+  }
 
   return (
     <div className="app">
-      <h1 className="app-title">Notes App</h1>
+      <div className="header-row">
+        <h1 className="app-title">Notes App</h1>
+        <button className="delete-btn" onClick={handleLogout}>Logout</button>
+      </div>
 
       <div className="input-row">
         <input

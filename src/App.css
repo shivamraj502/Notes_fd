@@ -96,3 +96,41 @@ body {
 .delete-btn:hover {
   opacity: 0.85;
 }
+
+.auth-box {
+  max-width: 350px;
+  margin: 100px auto;
+  padding: 24px;
+  background: #1f2028;
+  border: 1px solid #2e303a;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #f3f4f6;
+  text-align: center;
+}
+
+.auth-error {
+  color: #ff5c5c;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.auth-toggle {
+  color: #c084fc;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header-row .app-title {
+  margin-bottom: 0;
+}
