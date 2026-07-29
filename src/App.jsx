@@ -86,7 +86,7 @@ function App() {
   return (
     <div className="app">
       <div className="header-row">
-        <h1 className="app-title">Notes App</h1>
+        <h1 className="app-title">Tasks Manager</h1>
         <button className="delete-btn" onClick={handleLogout}>Logout</button>
       </div>
 
@@ -95,7 +95,7 @@ function App() {
           className="note-input"
           value={note}
           onChange={(e) => setNote(e.target.value)}
-          placeholder="Enter notes"
+          placeholder="Enter tasks"
         />
         <button className="add-btn" onClick={addNote}>Add</button>
       </div>
@@ -105,7 +105,7 @@ function App() {
           <div className="note-card" key={item._id}>
             <span className="note-text">{item.title}</span>
             <button className="delete-btn" onClick={() => deleteNote(item._id)}>
-              Delete
+              Done
             </button>
           </div>
         ))}
