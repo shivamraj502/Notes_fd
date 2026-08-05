@@ -19,6 +19,7 @@ Backend (Node)
 MongoDB Atlas
  */
 
+import Timer from "./components/Timer";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
@@ -90,6 +91,7 @@ function App() {
         <button className="delete-btn" onClick={handleLogout}>Logout</button>
       </div>
 
+      <Timer/>
       <div className="input-row">
         <input
           className="note-input"
