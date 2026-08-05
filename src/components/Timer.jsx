@@ -10,7 +10,7 @@ function Timer() {
 
   const timerValues = {
     focus: 60 * 60,
-    break: 10 * 60,
+    break: 1 * 60,
     long: 25 * 60
   };
 
