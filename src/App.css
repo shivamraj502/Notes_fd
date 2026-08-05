@@ -273,6 +273,7 @@ background:#9ca3af;
 cursor:not-allowed;
 }
 
+/* 
 .progress-bar{
 height:12px;
 background:#d1d5db;
@@ -286,4 +287,37 @@ width:80%;
 height:100%;
 background:#22c55e;
 transition:width 1s linear;
+} */
+
+.circle-container{
+position:relative;
+width:260px;
+height:260px;
+margin:25px auto;
+}
+
+.progress-ring{
+transform:rotate(-90deg);
+}
+
+.background-circle{
+fill:none;
+stroke:#e5e7eb;
+}
+
+.progress-circle{
+fill:none;
+stroke:#2563eb;
+stroke-linecap:round;
+transition:stroke-dashoffset 1s linear;
+}
+
+.time-text{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:46px;
+font-weight:bold;
+color:#1e293b;
 }

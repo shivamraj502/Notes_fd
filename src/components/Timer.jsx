@@ -6,12 +6,7 @@ import alarm5 from "../assets/sounds/alarm5.mp3";
 import { useEffect, useState } from "react";
 
 function Timer() {
-  //   const timerValues = {
-  //     focus: 60 * 60,
-  //     break: 1 * 60,
-  //     long: 25 * 60
-  //   };
-
+  
   const [timerValues, setTimerValues] = useState(() => {
     const saved = localStorage.getItem("timerValues");
     return saved
@@ -50,7 +45,9 @@ function Timer() {
     return localStorage.getItem("selectedSound") || "alarm1";
   });
 
-  const progress = (timeLeft / timerValues[mode]) * 100;
+  const radius = 110;
+  const circumference = 2 * Math.PI * radius;
+  const progress = (timeLeft / timerValues[mode]) * circumference;
 
   const playAlarm = () => {
     const audio = new Audio(sounds[selectedSound]);
@@ -128,6 +125,39 @@ function Timer() {
     <div className="timer-container">
       <h2>Study Timer</h2>
 
+        <div className="circle-container">
+        <svg
+        width="260"
+        height="260"
+        className="progress-ring"
+        >
+
+        <circle
+            className="background-circle"
+            strokeWidth="12"
+            r={radius}
+            cx="130"
+            cy="130"
+        />
+
+        <circle
+            className="progress-circle"
+            strokeWidth="12"
+            r={radius}
+            cx="130"
+            cy="130"
+            style={{
+                strokeDasharray: circumference,
+                strokeDashoffset: circumference - progress
+            }}
+        />
+        </svg>
+
+        <div className="time-text">
+            {formatTime()}
+        </div>
+    </div>
+
       <div className="timer-tabs">
         <button
           className={mode === "focus" ? "active-tab" : ""}
@@ -151,16 +181,9 @@ function Timer() {
         </button>
       </div>
 
-      <h1>{formatTime()}</h1>
+      {/* <h1>{formatTime()}</h1> */}
 
-      <div className="progress-bar">
-        <div
-          className="progress-fill"
-          style={{
-            width: `${progress}%`,
-          }}
-        ></div>
-      </div>
+      
 
       <div className="timer-buttons">
         <button disabled={running} onClick={() => setRunning(true)}>
@@ -206,6 +229,7 @@ function Timer() {
             min="1"
           />
         </div>
+
         <div>
           <label>Break</label>
           <input
@@ -221,6 +245,7 @@ function Timer() {
             min="1"
           />
         </div>
+        
         <div>
           <label>Long Break</label>
           <input
