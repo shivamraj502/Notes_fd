@@ -265,7 +265,7 @@ function Timer() {
 
       <h3>
         Current Mode : 
-        {mode === "focus" ? "Focus" : mode === "break" ? "Break" : "Long Break"}
+        {mode === "focus" ? " Focus" : mode === " Break" ? "Break" : " Long Break"}
       </h3>
       <div className="timer-stats">
         <p>✅ Focus :{focusCount}</p>
