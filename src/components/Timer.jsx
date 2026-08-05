@@ -245,7 +245,7 @@ function Timer() {
             min="1"
           />
         </div>
-        
+
         <div>
           <label>Long Break</label>
           <input
@@ -264,7 +264,7 @@ function Timer() {
       </div>
 
       <h3>
-        Current Mode :
+        Current Mode : 
         {mode === "focus" ? "Focus" : mode === "break" ? "Break" : "Long Break"}
       </h3>
       <div className="timer-stats">
