@@ -233,3 +233,57 @@ padding:8px;
 text-align:center;
 border-radius:6px;
 }
+
+.active-tab{
+background:#2563eb;
+color:white;
+font-weight:bold;
+}
+
+.timer-tabs button{
+padding:10px 20px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+transition:.3s;
+}
+
+.timer-tabs button:hover{
+background:#3b82f6;
+color:white;
+}
+
+.timer-buttons button{
+padding:12px 24px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+background:#2563eb;
+color:white;
+font-weight:bold;
+transition:.3s;
+}
+
+.timer-buttons button:hover{
+background:#1d4ed8;
+}
+
+.timer-buttons button:disabled{
+background:#9ca3af;
+cursor:not-allowed;
+}
+
+.progress-bar{
+height:12px;
+background:#d1d5db;
+border-radius:10px;
+overflow:hidden;
+margin:20px auto;
+width:80%;
+}
+
+.progress-fill{
+height:100%;
+background:#22c55e;
+transition:width 1s linear;
+}

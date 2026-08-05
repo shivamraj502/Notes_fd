@@ -17,9 +17,9 @@ function Timer() {
     return saved
       ? JSON.parse(saved)
       : {
-          focus: 25 * 60,
-          break: 5 * 60,
-          long: 15 * 60,
+          focus: 60 * 60,
+          break: 10 * 60,
+          long: 25 * 60,
         };
   });
 
@@ -49,6 +49,8 @@ function Timer() {
   const [selectedSound, setSelectedSound] = useState(() => {
     return localStorage.getItem("selectedSound") || "alarm1";
   });
+
+  const progress = (timeLeft / timerValues[mode]) * 100;
 
   const playAlarm = () => {
     const audio = new Audio(sounds[selectedSound]);
@@ -127,19 +129,47 @@ function Timer() {
       <h2>Study Timer</h2>
 
       <div className="timer-tabs">
-        <button onClick={() => changeMode("focus")}>Focus</button>
+        <button
+          className={mode === "focus" ? "active-tab" : ""}
+          onClick={() => changeMode("focus")}
+        >
+          Focus
+        </button>
 
-        <button onClick={() => changeMode("break")}>Break</button>
+        <button
+          className={mode === "break" ? "active-tab" : ""}
+          onClick={() => changeMode("break")}
+        >
+          Break
+        </button>
 
-        <button onClick={() => changeMode("long")}>Long Break</button>
+        <button
+          className={mode === "long" ? "active-tab" : ""}
+          onClick={() => changeMode("long")}
+        >
+          Long Break
+        </button>
       </div>
 
       <h1>{formatTime()}</h1>
 
-      <div className="timer-buttons">
-        <button onClick={() => setRunning(true)}>Start</button>
+      <div className="progress-bar">
+        <div
+          className="progress-fill"
+          style={{
+            width: `${progress}%`,
+          }}
+        ></div>
+      </div>
 
-        <button onClick={() => setRunning(false)}>Pause</button>
+      <div className="timer-buttons">
+        <button disabled={running} onClick={() => setRunning(true)}>
+          Start
+        </button>
+
+        <button disabled={!running} onClick={() => setRunning(false)}>
+          Pause
+        </button>
 
         <button onClick={resetTimer}>Reset</button>
       </div>
