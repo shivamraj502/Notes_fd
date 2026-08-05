@@ -180,7 +180,7 @@ font-size:16px;
 margin-top:25px;
 display:flex;
 justify-content:center;
-background-color: #117a7a;
+/* background-color: #117a7a; */
 gap:25px;
 flex-wrap:wrap;
 }

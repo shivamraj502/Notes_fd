@@ -163,17 +163,17 @@ function Timer() {
       </h3>
       <div className="timer-stats">
         <p>
-          ✅ Focus Completed :
+          ✅ Focus :
           {focusCount}
         </p>
 
         <p>
-          ☕ Break Completed :
+          ☕ Break :
           {breakCount}
         </p>
 
         <p>
-          🌙 Long Break Completed :
+          🌙 Long Break :
           {longBreakCount}
         </p>
 
