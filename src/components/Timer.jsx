@@ -198,7 +198,11 @@
 
 // export default Timer;
 
-
+import alarm1 from "../assets/sounds/alarm1.mp3";
+import alarm2 from "../assets/sounds/alarm2.mp3";
+import alarm3 from "../assets/sounds/alarm3.mp3";
+import alarm4 from "../assets/sounds/alarm4.mp3";
+import alarm5 from "../assets/sounds/alarm5.mp3";
 import { useEffect, useState } from "react";
 
 function Timer() {
@@ -212,10 +216,23 @@ function Timer() {
   const [mode, setMode] = useState("focus");
   const [timeLeft, setTimeLeft] = useState(timerValues.focus);
   const [running, setRunning] = useState(false);
-
   const [focusCount, setFocusCount] = useState(0);
   const [breakCount, setBreakCount] = useState(0);
   const [longBreakCount, setLongBreakCount] = useState(0);
+
+  const sounds = {
+  alarm1,
+  alarm2,
+  alarm3,
+  alarm4,
+  alarm5
+  };
+  const [selectedSound, setSelectedSound] = useState("alarm1");
+
+  const playAlarm = () => {
+  const audio = new Audio(sounds[selectedSound]);
+  audio.play();
+  };
 
   useEffect(() => {
 
@@ -229,6 +246,7 @@ function Timer() {
 
     if(running && timeLeft===0){
 
+        playAlarm();
       setRunning(false);
       if(mode==="focus"){
         setFocusCount(prev=>prev+1);
@@ -278,8 +296,8 @@ function Timer() {
   return(
     <div className="timer-container">
       <h2>Study Timer</h2>
-      <div className="timer-tabs">
 
+      <div className="timer-tabs">
         <button onClick={()=>changeMode("focus")}>
           Focus
         </button>
@@ -291,14 +309,13 @@ function Timer() {
         <button onClick={()=>changeMode("long")}>
           Long Break
         </button>
-
       </div>
+
       <h1>
         {formatTime()}
       </h1>
 
       <div className="timer-buttons">
-
         <button onClick={()=>setRunning(true)}>
           Start
         </button>
@@ -311,6 +328,22 @@ function Timer() {
           Reset
         </button>
       </div>
+
+      <div className="sound-selector">
+
+    <label>Select Alarm: </label>
+
+    <select
+    value={selectedSound}
+    onChange={(e) => setSelectedSound(e.target.value)}
+    >
+    <option value="alarm1">Alarm 1</option>
+    <option value="alarm2">Alarm 2</option>
+    <option value="alarm3">Alarm 3</option>
+    <option value="alarm4">Alarm 4</option>
+    <option value="alarm5">Alarm 5</option>
+    </select>
+    </div>
 
       <h3>
         Current Mode :
