@@ -136,7 +136,7 @@ body {
 }
 
 .timer-container{
-background:#ffffff;
+background:rgb(155, 219, 216);
 padding:20px;
 margin-bottom:25px;
 border-radius:12px;
@@ -147,6 +147,7 @@ text-align:center;
 .timer-tabs{
 display:flex;
 justify-content:center;
+/* text:black; */
 gap:15px;
 margin:20px 0;
 }
