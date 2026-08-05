@@ -180,13 +180,13 @@ font-size:16px;
 margin-top:25px;
 display:flex;
 justify-content:center;
-background-color: #85eeee;
+background-color: #117a7a;
 gap:25px;
 flex-wrap:wrap;
 }
 
 .timer-stats p{
-background:#f3f4f6;
+background:#54afab;
 padding:10px 18px;
 border-radius:8px;
 font-weight:bold;
