@@ -109,12 +109,12 @@ function Timer() {
     setTimeLeft(timerValues[newMode]);
   };
 
-  const resetTimer = () => {
+  const resetStatistics = () => {
     setRunning(false);
     setTimeLeft(timerValues[mode]);
   };
 
-  const resetStatistics = () => {
+  const resetTimer = () => {
     const confirmReset = window.confirm("Reset all completed timer counts?");
 
     if (!confirmReset) return;
