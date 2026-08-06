@@ -273,21 +273,13 @@ background:#9ca3af;
 cursor:not-allowed;
 }
 
-/* 
-.progress-bar{
-height:12px;
-background:#d1d5db;
-border-radius:10px;
-overflow:hidden;
-margin:20px auto;
-width:80%;
+.timer-buttons button:last-child{
+background:#dc2626;
 }
 
-.progress-fill{
-height:100%;
-background:#22c55e;
-transition:width 1s linear;
-} */
+.timer-buttons button:last-child:hover{
+background:#b91c1c;
+}
 
 .circle-container{
 position:relative;

@@ -6,7 +6,6 @@ import alarm5 from "../assets/sounds/alarm5.mp3";
 import { useEffect, useState } from "react";
 
 function Timer() {
-  
   const [timerValues, setTimerValues] = useState(() => {
     const saved = localStorage.getItem("timerValues");
     return saved
@@ -115,6 +114,20 @@ function Timer() {
     setTimeLeft(timerValues[mode]);
   };
 
+  const resetStatistics = () => {
+    const confirmReset = window.confirm("Reset all completed timer counts?");
+
+    if (!confirmReset) return;
+
+    setFocusCount(0);
+    setBreakCount(0);
+    setLongBreakCount(0);
+
+    localStorage.setItem("focusCount", 0);
+    localStorage.setItem("breakCount", 0);
+    localStorage.setItem("longBreakCount", 0);
+  };
+
   const formatTime = () => {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
@@ -125,38 +138,31 @@ function Timer() {
     <div className="timer-container">
       <h2>Study Timer</h2>
 
-        <div className="circle-container">
-        <svg
-        width="260"
-        height="260"
-        className="progress-ring"
-        >
-
-        <circle
+      <div className="circle-container">
+        <svg width="260" height="260" className="progress-ring">
+          <circle
             className="background-circle"
             strokeWidth="12"
             r={radius}
             cx="130"
             cy="130"
-        />
+          />
 
-        <circle
+          <circle
             className="progress-circle"
             strokeWidth="12"
             r={radius}
             cx="130"
             cy="130"
             style={{
-                strokeDasharray: circumference,
-                strokeDashoffset: circumference - progress
+              strokeDasharray: circumference,
+              strokeDashoffset: circumference - progress,
             }}
-        />
+          />
         </svg>
 
-        <div className="time-text">
-            {formatTime()}
-        </div>
-    </div>
+        <div className="time-text">{formatTime()}</div>
+      </div>
 
       <div className="timer-tabs">
         <button
@@ -181,10 +187,6 @@ function Timer() {
         </button>
       </div>
 
-      {/* <h1>{formatTime()}</h1> */}
-
-      
-
       <div className="timer-buttons">
         <button disabled={running} onClick={() => setRunning(true)}>
           Start
@@ -195,6 +197,8 @@ function Timer() {
         </button>
 
         <button onClick={resetTimer}>Reset</button>
+
+        <button onClick={resetStatistics}>Reset Stats</button>
       </div>
 
       <div className="sound-selector">
@@ -264,8 +268,12 @@ function Timer() {
       </div>
 
       <h3>
-        Current Mode : 
-        {mode === "focus" ? " Focus" : mode === "break" ? " Break" : " Long Break"}
+        Current Mode :
+        {mode === "focus"
+          ? " Focus"
+          : mode === "break"
+            ? " Break"
+            : " Long Break"}
       </h3>
       <div className="timer-stats">
         <p>✅ Focus :{focusCount}</p>
