@@ -53,9 +53,21 @@ function Timer() {
     audio.play();
   };
 
+  // const previewSound = (soundName) => {
+  // const audio = new Audio(sounds[soundName]);
+  // audio.play();
+  // };
+
+  let previewAudio = null;
+
   const previewSound = (soundName) => {
-  const audio = new Audio(sounds[soundName]);
-  audio.play();
+    if (previewAudio) {
+      previewAudio.pause();
+      previewAudio.currentTime = 0;
+    }
+
+    previewAudio = new Audio(sounds[soundName]);
+    previewAudio.play();
   };
 
   useEffect(() => {
