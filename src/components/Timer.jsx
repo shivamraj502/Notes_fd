@@ -138,32 +138,6 @@ function Timer() {
     <div className="timer-container">
       <h2>Study Timer</h2>
 
-      <div className="circle-container">
-        <svg width="260" height="260" className="progress-ring">
-          <circle
-            className="background-circle"
-            strokeWidth="12"
-            r={radius}
-            cx="130"
-            cy="130"
-          />
-
-          <circle
-            className="progress-circle"
-            strokeWidth="12"
-            r={radius}
-            cx="130"
-            cy="130"
-            style={{
-              strokeDasharray: circumference,
-              strokeDashoffset: circumference - progress,
-            }}
-          />
-        </svg>
-
-        <div className="time-text">{formatTime()}</div>
-      </div>
-
       <div className="timer-tabs">
         <button
           className={mode === "focus" ? "active-tab" : ""}
@@ -188,6 +162,32 @@ function Timer() {
           <span className="tab-title">🌙 Long Break</span>
           <span className="tab-count">{longBreakCount}</span>
         </button>
+      </div>
+
+      <div className="circle-container">
+        <svg width="260" height="260" className="progress-ring">
+          <circle
+            className="background-circle"
+            strokeWidth="12"
+            r={radius}
+            cx="130"
+            cy="130"
+          />
+
+          <circle
+            className="progress-circle"
+            strokeWidth="12"
+            r={radius}
+            cx="130"
+            cy="130"
+            style={{
+              strokeDasharray: circumference,
+              strokeDashoffset: circumference - progress,
+            }}
+          />
+        </svg>
+
+        <div className="time-text">{formatTime()}</div>
       </div>
 
       <div className="timer-buttons">
