@@ -109,10 +109,10 @@ function Timer() {
     setTimeLeft(timerValues[newMode]);
   };
 
-  const resetStatistics = () => {
-    setRunning(false);
-    setTimeLeft(timerValues[mode]);
-  };
+  // const resetStatistics = () => {
+  //   setRunning(false);
+  //   setTimeLeft(timerValues[mode]);
+  // };
 
   const resetTimer = () => {
     const confirmReset = window.confirm("Reset all completed timer counts?");
@@ -201,7 +201,7 @@ function Timer() {
 
         <button onClick={resetTimer}>Reset</button>
 
-        <button onClick={resetStatistics}>Reset Stats</button>
+        {/* <button onClick={resetStatistics}>Reset Stats</button> */}
       </div>
 
       <div className="sound-selector">
