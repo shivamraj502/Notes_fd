@@ -176,6 +176,34 @@ cursor:pointer;
 font-size:16px;
 }
 
+.timer-buttons button{
+padding:12px 24px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+background:#2563eb;
+color:white;
+font-weight:bold;
+transition:.3s;
+}
+
+.timer-buttons button:hover{
+background:#1d4ed8;
+}
+
+.timer-buttons button:disabled{
+background:#9ca3af;
+cursor:not-allowed;
+}
+
+.timer-buttons button:last-child{
+background:#dc2626;
+}
+
+.timer-buttons button:last-child:hover{
+background:#b91c1c;
+}
+
 .timer-stats{
 margin-top:25px;
 display:flex;
@@ -305,34 +333,6 @@ font-weight:bold;
 margin-top:8px;
 font-size:28px;
 font-weight:bold;
-}
-
-.timer-buttons button{
-padding:12px 24px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-background:#2563eb;
-color:white;
-font-weight:bold;
-transition:.3s;
-}
-
-.timer-buttons button:hover{
-background:#1d4ed8;
-}
-
-.timer-buttons button:disabled{
-background:#9ca3af;
-cursor:not-allowed;
-}
-
-.timer-buttons button:last-child{
-background:#dc2626;
-}
-
-.timer-buttons button:last-child:hover{
-background:#b91c1c;
 }
 
 .circle-container{

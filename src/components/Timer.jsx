@@ -200,8 +200,7 @@ function Timer() {
         </button>
 
         <button onClick={resetTimer}>Reset</button>
-
-        {/* <button onClick={resetStatistics}>Reset Stats</button> */}
+        
       </div>
 
       <div className="sound-selector">
