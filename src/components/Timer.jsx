@@ -54,11 +54,6 @@ function Timer() {
     audio.play();
   };
 
-  // const previewSound = (soundName) => {
-  // const audio = new Audio(sounds[soundName]);
-  // audio.play();
-  // };
-
   const previewSound = (soundName) => {
     if (previewAudioRef.current) {
       previewAudioRef.current.pause();
@@ -120,9 +115,10 @@ function Timer() {
   }, [selectedSound]);
 
   const changeMode = (newMode) => {
-    setRunning(false);
-    setMode(newMode);
-    setTimeLeft(timerValues[newMode]);
+  if (running) {    return;  }
+
+  setMode(newMode);
+  setTimeLeft(timerValues[newMode]);
   };
 
   const resetTimer = () => {
