@@ -1,13 +1,13 @@
-import alarm1 from "../assets/sounds/alarm11.mp3";
-import alarm2 from "../assets/sounds/alarm22.mp3";
-import alarm3 from "../assets/sounds/alarm33.mp3";
-import alarm4 from "../assets/sounds/alarm44.mp3";
-import alarm5 from "../assets/sounds/alarm55.mp3";
+import alarm11 from "../assets/sounds/alarm11.mp3";
+import alarm22 from "../assets/sounds/alarm22.mp3";
+import alarm33 from "../assets/sounds/alarm33.mp3";
+import alarm44 from "../assets/sounds/alarm44.mp3";
+import alarm55 from "../assets/sounds/alarm55.mp3";
 import { useEffect, useState, useRef } from "react";
-const previewAudioRef = useRef(null);
 
 function Timer() {
-  const [timerValues, setTimerValues] = useState(() => {
+    const previewAudioRef = useRef(null);
+    const [timerValues, setTimerValues] = useState(() => {
     const saved = localStorage.getItem("timerValues");
     return saved
       ? JSON.parse(saved)
@@ -42,7 +42,7 @@ function Timer() {
   };
 
   const [selectedSound, setSelectedSound] = useState(() => {
-    return localStorage.getItem("selectedSound") || "alarm1";
+    return localStorage.getItem("selectedSound") || "alarm11";
   });
 
   const radius = 110;
@@ -96,8 +96,8 @@ function Timer() {
       }
     }
 
-    return () => clearInterval(interval);
-  }, [running, timeLeft]);
+  return () => clearInterval(interval);
+  }, [running, timeLeft, mode, timerValues]);
 
   useEffect(() => {
     localStorage.setItem("timerValues", JSON.stringify(timerValues));
