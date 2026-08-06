@@ -1,8 +1,8 @@
-import alarm11 from "../assets/sounds/alarm11.mp3";
-import alarm22 from "../assets/sounds/alarm22.mp3";
-import alarm33 from "../assets/sounds/alarm33.mp3";
-import alarm44 from "../assets/sounds/alarm44.mp3";
-import alarm55 from "../assets/sounds/alarm55.mp3";
+import alarm1 from "../assets/sounds/alarm1.mp4";
+import alarm2 from "../assets/sounds/alarm2.mp4";
+import alarm3 from "../assets/sounds/alarm3.mp4";
+import alarm4 from "../assets/sounds/alarm4.mp4";
+import alarm5 from "../assets/sounds/alarm5.mp4";
 import { useEffect, useState, useRef } from "react";
 
 function Timer() {
@@ -34,15 +34,15 @@ function Timer() {
   });
 
   const sounds = {
-    alarm11,
-    alarm22,
-    alarm33,
-    alarm44,
-    alarm55,
+    alarm1,
+    alarm2,
+    alarm3,
+    alarm4,
+    alarm5,
   };
 
   const [selectedSound, setSelectedSound] = useState(() => {
-    return localStorage.getItem("selectedSound") || "alarm11";
+    return localStorage.getItem("selectedSound") || "alarm1";
   });
 
   const radius = 110;
