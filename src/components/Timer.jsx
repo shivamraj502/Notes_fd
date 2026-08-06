@@ -147,6 +147,7 @@ function Timer() {
 
       <div className="timer-tabs">
         <button
+          disabled={running}
           className={mode === "focus" ? "active-tab" : ""}
           onClick={() => changeMode("focus")}
         >
@@ -155,6 +156,7 @@ function Timer() {
         </button>
 
         <button
+          disabled={running}
           className={mode === "break" ? "active-tab" : ""}
           onClick={() => changeMode("break")}
         >
@@ -163,6 +165,7 @@ function Timer() {
         </button>
 
         <button
+          disabled={running}
           className={mode === "long" ? "active-tab" : ""}
           onClick={() => changeMode("long")}
         >
