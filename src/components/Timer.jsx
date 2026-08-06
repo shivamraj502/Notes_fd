@@ -169,21 +169,24 @@ function Timer() {
           className={mode === "focus" ? "active-tab" : ""}
           onClick={() => changeMode("focus")}
         >
-          Focus
+          <span className="tab-title">🍅 Focus</span>
+          <span className="tab-count">{focusCount}</span>
         </button>
 
         <button
           className={mode === "break" ? "active-tab" : ""}
           onClick={() => changeMode("break")}
         >
-          Break
+          <span className="tab-title">☕ Break</span>
+          <span className="tab-count">{breakCount}</span>
         </button>
 
         <button
           className={mode === "long" ? "active-tab" : ""}
           onClick={() => changeMode("long")}
         >
-          Long Break
+          <span className="tab-title">🌙 Long Break</span>
+          <span className="tab-count">{longBreakCount}</span>
         </button>
       </div>
 
@@ -275,13 +278,7 @@ function Timer() {
             ? " Break"
             : " Long Break"}
       </h3>
-      <div className="timer-stats">
-        <p>✅ Focus :{focusCount}</p>
-
-        <p>☕ Break :{breakCount}</p>
-
-        <p>🌙 Long Break :{longBreakCount}</p>
-      </div>
+      
     </div>
   );
 }
