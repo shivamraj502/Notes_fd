@@ -3,7 +3,8 @@ import alarm2 from "../assets/sounds/alarm2.mp3";
 import alarm3 from "../assets/sounds/alarm3.mp3";
 import alarm4 from "../assets/sounds/alarm4.mp3";
 import alarm5 from "../assets/sounds/alarm5.mp3";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+const previewAudioRef = useRef(null);
 
 function Timer() {
   const [timerValues, setTimerValues] = useState(() => {
