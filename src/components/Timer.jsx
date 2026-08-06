@@ -160,7 +160,7 @@ function Timer() {
           className={mode === "break" ? "active-tab" : ""}
           onClick={() => changeMode("break")}
         >
-          <span className="tab-title">Break</span>
+          <span className="tab-title">Short Break</span>
           <span className="tab-count">{breakCount}</span>
         </button>
 
