@@ -59,16 +59,14 @@ function Timer() {
   // audio.play();
   // };
 
-  let previewAudio = null;
-
   const previewSound = (soundName) => {
-    if (previewAudio) {
-      previewAudio.pause();
-      previewAudio.currentTime = 0;
+    if (previewAudioRef.current) {
+      previewAudioRef.current.pause();
+      previewAudioRef.current.currentTime = 0;
     }
 
-    previewAudio = new Audio(sounds[soundName]);
-    previewAudio.play();
+    previewAudioRef.current = new Audio(sounds[soundName]);
+    previewAudioRef.current.play();
   };
 
   useEffect(() => {
