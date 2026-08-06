@@ -220,20 +220,67 @@ border-radius:8px;
 font-weight:bold;
 }
 
-.sound-selector{
-margin-top:20px;
-display:flex;
-justify-content:center;
-align-items:center;
-gap:10px;
-flex-wrap:wrap;
+.sound-section {
+  margin-top: 30px;
 }
 
-.sound-selector select{
-padding:8px 12px;
-border-radius:6px;
-font-size:15px;
-cursor:pointer;
+.sound-section h3 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sound-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  margin-bottom: 12px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+}
+
+.sound-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.play-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.play-btn:hover {
+  background: #1d4ed8;
+}
+
+.select-btn {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.select-btn:hover {
+  background: #059669;
+}
+
+.selected-btn {
+  background: #f59e0b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: default;
+  font-weight: bold;
 }
 
 .timer-settings{
@@ -384,4 +431,19 @@ font-size:13px;
 .timer-box span{
 font-size:24px;
 }
+}
+
+.preview-btn{
+padding:8px 15px;
+border:none;
+border-radius:8px;
+background:#16a34a;
+color:white;
+cursor:pointer;
+font-weight:bold;
+transition:.3s;
+}
+
+.preview-btn:hover{
+background:#15803d;
 }

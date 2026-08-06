@@ -53,6 +53,11 @@ function Timer() {
     audio.play();
   };
 
+  const previewSound = (soundName) => {
+  const audio = new Audio(sounds[soundName]);
+  audio.play();
+  };
+
   useEffect(() => {
     let interval;
 
@@ -108,11 +113,6 @@ function Timer() {
     setMode(newMode);
     setTimeLeft(timerValues[newMode]);
   };
-
-  // const resetStatistics = () => {
-  //   setRunning(false);
-  //   setTimeLeft(timerValues[mode]);
-  // };
 
   const resetTimer = () => {
     const confirmReset = window.confirm("Reset all completed timer counts?");
@@ -200,22 +200,31 @@ function Timer() {
         </button>
 
         <button onClick={resetTimer}>Reset</button>
-        
       </div>
 
-      <div className="sound-selector">
-        <label>Select Alarm: </label>
+      <div className="sound-section">
+        <h3>Choose Alarm Sound</h3>
 
-        <select
-          value={selectedSound}
-          onChange={(e) => setSelectedSound(e.target.value)}
-        >
-          <option value="alarm1">Alarm 1</option>
-          <option value="alarm2">Alarm 2</option>
-          <option value="alarm3">Alarm 3</option>
-          <option value="alarm4">Alarm 4</option>
-          <option value="alarm5">Alarm 5</option>
-        </select>
+        {Object.keys(sounds).map((sound) => (
+          <div className="sound-card" key={sound}>
+            <span className="sound-name">
+              🔔 {sound.replace("alarm", "Alarm ")}
+            </span>
+
+            <button className="play-btn" onClick={() => previewSound(sound)}>
+              ▶ Play
+            </button>
+
+            <button
+              className={
+                selectedSound === sound ? "selected-btn" : "select-btn"
+              }
+              onClick={() => setSelectedSound(sound)}
+            >
+              {selectedSound === sound ? "✓ Selected" : "Select"}
+            </button>
+          </div>
+        ))}
       </div>
 
       <div className="timer-settings">
@@ -277,7 +286,6 @@ function Timer() {
             ? " Break"
             : " Long Break"}
       </h3>
-      
     </div>
   );
 }
