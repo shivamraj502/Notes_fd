@@ -175,7 +175,8 @@ function Timer() {
       </div>
 
       <div className="circle-container">
-        <svg width="260" height="260" className="progress-ring">
+        {/* <svg width="260" height="260" className="progress-ring"> */}
+        <svg viewBox="0 0 260 260" className="progress-ring">
           <circle
             className="background-circle"
             strokeWidth="12"
@@ -211,31 +212,6 @@ function Timer() {
 
         <button onClick={resetTimer}>Reset</button>
       </div>
-
-      {/* <div className="sound-section">
-        <h3>Choose Alarm Sound</h3>
-
-        {Object.keys(sounds).map((sound) => (
-          <div className="sound-card" key={sound}>
-            <span className="sound-name">
-              🔔 {sound.replace("alarm", "Alarm ")}
-            </span>
-
-            <button className="play-btn" onClick={() => previewSound(sound)}>
-              ▶ Play
-            </button>
-
-            <button
-              className={
-                selectedSound === sound ? "selected-btn" : "select-btn"
-              }
-              onClick={() => setSelectedSound(sound)}
-            >
-              {selectedSound === sound ? "✓ Selected" : "Select"}
-            </button>
-          </div>
-        ))}
-      </div> */}
 
       <div className="sound-section">
         <h3>Alarm Sound</h3>
