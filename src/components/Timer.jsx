@@ -212,7 +212,7 @@ function Timer() {
         <button onClick={resetTimer}>Reset</button>
       </div>
 
-      <div className="sound-section">
+      {/* <div className="sound-section">
         <h3>Choose Alarm Sound</h3>
 
         {Object.keys(sounds).map((sound) => (
@@ -235,6 +235,47 @@ function Timer() {
             </button>
           </div>
         ))}
+      </div> */}
+
+      <div className="sound-section">
+        <h3>Alarm Sound</h3>
+
+        <div className="sound-toggle">
+          <button
+            className="toggle-arrow"
+            onClick={() => {
+              const keys = Object.keys(sounds);
+              const idx = keys.indexOf(selectedSound);
+              const prevIdx = (idx - 1 + keys.length) % keys.length;
+              setSelectedSound(keys[prevIdx]);
+            }}
+          >
+            ◀
+          </button>
+
+          <span className="sound-name">
+            🔔 {selectedSound.replace("alarm", "Alarm ")}
+          </span>
+
+          <button
+            className="toggle-arrow"
+            onClick={() => {
+              const keys = Object.keys(sounds);
+              const idx = keys.indexOf(selectedSound);
+              const nextIdx = (idx + 1) % keys.length;
+              setSelectedSound(keys[nextIdx]);
+            }}
+          >
+            ▶
+          </button>
+
+          <button
+            className="play-btn"
+            onClick={() => previewSound(selectedSound)}
+          >
+            ▶ Play
+          </button>
+        </div>
       </div>
 
       <div className="timer-settings">

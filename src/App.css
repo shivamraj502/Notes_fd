@@ -564,3 +564,37 @@ background:#15803d;
     flex: 1 1 100%;
   }
 }
+
+.sound-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 10px 16px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+}
+
+.toggle-arrow {
+  background: #e5e7eb;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: .3s;
+}
+
+.toggle-arrow:hover {
+  background: #d1d5db;
+}
+
+.sound-toggle .sound-name {
+  min-width: 90px;
+  text-align: center;
+}
+
+.sound-toggle .play-btn {
+  margin-left: auto;
+}
