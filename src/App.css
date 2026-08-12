@@ -571,13 +571,13 @@ background:#15803d;
   justify-content: center;
   gap: 14px;
   padding: 10px 16px;
-  background: #ffffff;
+  background: #82ddeb;
   border-radius: 12px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
 }
 
 .toggle-arrow {
-  background: #e5e7eb;
+  background: #7fbbcd;
   border: none;
   padding: 8px 12px;
   border-radius: 8px;
@@ -587,7 +587,7 @@ background:#15803d;
 }
 
 .toggle-arrow:hover {
-  background: #d1d5db;
+  background: #76b9ae;
 }
 
 .sound-toggle .sound-name {
