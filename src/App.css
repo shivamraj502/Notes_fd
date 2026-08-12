@@ -125,17 +125,6 @@ html, body {
   margin-top: 8px;
 }
 
-/* .header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.header-row .app-title {
-  margin-bottom: 0;
-} */
-
 .header-row {
   display: flex;
   justify-content: space-between;
