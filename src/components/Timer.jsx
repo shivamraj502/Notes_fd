@@ -175,8 +175,8 @@ function Timer() {
       </div>
 
       <div className="circle-container">
-        {/* <svg width="260" height="260" className="progress-ring"> */}
-        <svg viewBox="0 0 260 260" className="progress-ring">
+        <svg width="260" height="260" className="progress-ring">
+        {/* <svg viewBox="0 0 260 260" className="progress-ring"> */}
           <circle
             className="background-circle"
             strokeWidth="12"
