@@ -9,13 +9,6 @@ html, body {
   font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* 
-html, body {
-  height: 100%;
-  margin: 0;
-  background: #16171d;
-} */
-
 .app {
   max-width: 500px;
   margin: 60px auto;
@@ -132,7 +125,7 @@ html, body {
   margin-top: 8px;
 }
 
-.header-row {
+/* .header-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -141,6 +134,23 @@ html, body {
 
 .header-row .app-title {
   margin-bottom: 0;
+} */
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header-row .app-title {
+  margin: 0;
+  line-height: 1;
+}
+
+.header-row .delete-btn {
+  line-height: 1;
+  margin-left: 0;
 }
 
 .timer-container{
