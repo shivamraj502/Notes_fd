@@ -16,12 +16,21 @@ html, body {
   color: #f3f4f6;
 }
 
-.app-title {
+/* .app-title {
   text-align: center;
   font-size: 2.0rem;
   font-weight: 600;
   margin-bottom: 32px;
   color: #f3f4f6;
+} */
+
+.app-title {
+  text-align: center;
+  font-size: clamp(1.1rem, 5vw, 2rem);
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #f3f4f6;
+  white-space: nowrap;
 }
 
 .input-row {
@@ -125,10 +134,19 @@ html, body {
   margin-top: 8px;
 }
 
+/* .header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+} */
+
 .header-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
   margin-bottom: 24px;
 }
 
