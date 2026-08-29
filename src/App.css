@@ -511,11 +511,11 @@ background:#15803d;
     padding: 12px;
   }
 
-  .header-row {
+  /* .header-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-  }
+  } */
 
   .app-title {
     font-size: 1.5rem;
