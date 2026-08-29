@@ -45,6 +45,8 @@ function Timer() {
     return localStorage.getItem("selectedSound") || "alarm1";
   });
 
+  const [endTime, setEndTime] = useState(null);
+
   const radius = 110;
   const circumference = 2 * Math.PI * radius;
   const progress = (timeLeft / timerValues[mode]) * circumference;
@@ -64,35 +66,79 @@ function Timer() {
     previewAudioRef.current.play();
   };
 
-  useEffect(() => {
-    let interval;
+  // useEffect(() => {
+  //   let interval;
 
-    if (running && timeLeft > 0) {
-      interval = setInterval(() => {
-        setTimeLeft((prev) => prev - 1);
-      }, 1000);
-    }
+  //   if (running && timeLeft > 0) {
+  //     interval = setInterval(() => {
+  //       setTimeLeft((prev) => prev - 1);
+  //     }, 1000);
+  //   }
 
-    if (running && timeLeft === 0) {
-      playAlarm();
-      setRunning(false);
-      if (mode === "focus") {
-        setFocusCount((prev) => prev + 1);
-        setMode("break");
-        setTimeLeft(timerValues.break);
-      } else if (mode === "break") {
-        setBreakCount((prev) => prev + 1);
-        setMode("long");
-        setTimeLeft(timerValues.long);
-      } else {
-        setLongBreakCount((prev) => prev + 1);
-        setMode("focus");
-        setTimeLeft(timerValues.focus);
+  //   if (running && timeLeft === 0) {
+  //     playAlarm();
+  //     setRunning(false);
+  //     if (mode === "focus") {
+  //       setFocusCount((prev) => prev + 1);
+  //       setMode("break");
+  //       setTimeLeft(timerValues.break);
+  //     } else if (mode === "break") {
+  //       setBreakCount((prev) => prev + 1);
+  //       setMode("long");
+  //       setTimeLeft(timerValues.long);
+  //     } else {
+  //       setLongBreakCount((prev) => prev + 1);
+  //       setMode("focus");
+  //       setTimeLeft(timerValues.focus);
+  //     }
+  //   }
+
+  // return () => clearInterval(interval);
+  // }, [running, timeLeft, mode, timerValues]);
+
+    useEffect(() => {
+      if (running && !endTime) {
+        setEndTime(Date.now() + timeLeft * 1000);
       }
-    }
+      if (!running) {
+        setEndTime(null);
+      }
+    }, [running]);
 
-  return () => clearInterval(interval);
-  }, [running, timeLeft, mode, timerValues]);
+    useEffect(() => {
+      let interval;
+
+      if (running && endTime) {
+        interval = setInterval(() => {
+          const secondsLeft = Math.round((endTime - Date.now()) / 1000);
+          setTimeLeft(secondsLeft > 0 ? secondsLeft : 0);
+        }, 1000);
+      }
+
+      return () => clearInterval(interval);
+    }, [running, endTime]);
+
+    useEffect(() => {
+      if (running && timeLeft === 0) {
+        playAlarm();
+        setRunning(false);
+        setEndTime(null);
+
+        if (mode === "focus") {
+          setFocusCount((prev) => prev + 1);
+          setMode("break");
+          setTimeLeft(timerValues.break);
+        } else if (mode === "break") {
+          setBreakCount((prev) => prev + 1);
+          setMode("long");
+          setTimeLeft(timerValues.long);
+        } else {
+          setLongBreakCount((prev) => prev + 1);
+          setMode("focus");
+          setTimeLeft(timerValues.focus);
+        }
+      }
+    }, [timeLeft, running, mode, timerValues]);
 
   useEffect(() => {
     localStorage.setItem("timerValues", JSON.stringify(timerValues));
