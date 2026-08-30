@@ -84,6 +84,24 @@ function App() {
     return <Login onLogin={() => setIsLoggedIn(true)} />;
   }
 
+  
+  // // Ask permission once, e.g. in a useEffect on mount
+  // useEffect(() => {
+  //   if (Notification.permission === "default") {
+  //     Notification.requestPermission();
+  //   }
+  // }, []);
+
+  // // In your "timeLeft === 0" useEffect, alongside playAlarm():
+  // if (Notification.permission === "granted") {
+  //   new Notification("Timer Complete!", {
+  //     body:
+  //       mode === "focus"
+  //         ? "Focus session done — time for a break!"
+  //         : "Break's over — back to focus!",
+  //   });
+  // }
+
   return (
     <div className="app">
       <div className="header-row">

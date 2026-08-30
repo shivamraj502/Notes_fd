@@ -67,6 +67,18 @@ function Timer() {
   };
 
     useEffect(() => {
+      if ("Notification" in window && Notification.permission === "default") {
+        Notification.requestPermission();
+      }
+    }, []);
+
+      const notifyComplete = (title, body) => {
+        if ("Notification" in window && Notification.permission === "granted") {
+          new Notification(title, { body });
+        }
+      };
+
+    useEffect(() => {
       if (running && !endTime) {
         setEndTime(Date.now() + timeLeft * 1000);
       }
@@ -88,27 +100,52 @@ function Timer() {
       return () => clearInterval(interval);
     }, [running, endTime]);
 
-    useEffect(() => {
-      if (running && timeLeft === 0) {
-        playAlarm();
-        setRunning(false);
-        setEndTime(null);
+    // useEffect(() => {
+    //   if (running && timeLeft === 0) {
+    //     playAlarm();
+    //     setRunning(false);
+    //     setEndTime(null);
 
-        if (mode === "focus") {
-          setFocusCount((prev) => prev + 1);
-          setMode("break");
-          setTimeLeft(timerValues.break);
-        } else if (mode === "break") {
-          setBreakCount((prev) => prev + 1);
-          setMode("long");
-          setTimeLeft(timerValues.long);
-        } else {
-          setLongBreakCount((prev) => prev + 1);
-          setMode("focus");
-          setTimeLeft(timerValues.focus);
-        }
+    //     if (mode === "focus") {
+    //       setFocusCount((prev) => prev + 1);
+    //       setMode("break");
+    //       setTimeLeft(timerValues.break);
+    //     } else if (mode === "break") {
+    //       setBreakCount((prev) => prev + 1);
+    //       setMode("long");
+    //       setTimeLeft(timerValues.long);
+    //     } else {
+    //       setLongBreakCount((prev) => prev + 1);
+    //       setMode("focus");
+    //       setTimeLeft(timerValues.focus);
+    //     }
+    //   }
+    // }, [timeLeft, running, mode, timerValues]);
+
+  useEffect(() => {
+    if (running && timeLeft === 0) {
+      playAlarm();
+      setRunning(false);
+      setEndTime(null);
+
+      if (mode === "focus") {
+        setFocusCount((prev) => prev + 1);
+        setMode("break");
+        setTimeLeft(timerValues.break);
+        notifyComplete("Focus session done!", "Time for a short break.");
+      } else if (mode === "break") {
+        setBreakCount((prev) => prev + 1);
+        setMode("long");
+        setTimeLeft(timerValues.long);
+        notifyComplete("Break's over!", "Time for a long break.");
+      } else {
+        setLongBreakCount((prev) => prev + 1);
+        setMode("focus");
+        setTimeLeft(timerValues.focus);
+        notifyComplete("Long break done!", "Back to focus mode.");
       }
-    }, [timeLeft, running, mode, timerValues]);
+    }
+  }, [timeLeft, running, mode, timerValues]);
 
   useEffect(() => {
     localStorage.setItem("timerValues", JSON.stringify(timerValues));
