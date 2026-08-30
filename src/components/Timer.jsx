@@ -100,28 +100,6 @@ function Timer() {
       return () => clearInterval(interval);
     }, [running, endTime]);
 
-    // useEffect(() => {
-    //   if (running && timeLeft === 0) {
-    //     playAlarm();
-    //     setRunning(false);
-    //     setEndTime(null);
-
-    //     if (mode === "focus") {
-    //       setFocusCount((prev) => prev + 1);
-    //       setMode("break");
-    //       setTimeLeft(timerValues.break);
-    //     } else if (mode === "break") {
-    //       setBreakCount((prev) => prev + 1);
-    //       setMode("long");
-    //       setTimeLeft(timerValues.long);
-    //     } else {
-    //       setLongBreakCount((prev) => prev + 1);
-    //       setMode("focus");
-    //       setTimeLeft(timerValues.focus);
-    //     }
-    //   }
-    // }, [timeLeft, running, mode, timerValues]);
-
   useEffect(() => {
     if (running && timeLeft === 0) {
       playAlarm();
