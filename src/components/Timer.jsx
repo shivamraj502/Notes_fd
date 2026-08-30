@@ -66,36 +66,6 @@ function Timer() {
     previewAudioRef.current.play();
   };
 
-  // useEffect(() => {
-  //   let interval;
-
-  //   if (running && timeLeft > 0) {
-  //     interval = setInterval(() => {
-  //       setTimeLeft((prev) => prev - 1);
-  //     }, 1000);
-  //   }
-
-  //   if (running && timeLeft === 0) {
-  //     playAlarm();
-  //     setRunning(false);
-  //     if (mode === "focus") {
-  //       setFocusCount((prev) => prev + 1);
-  //       setMode("break");
-  //       setTimeLeft(timerValues.break);
-  //     } else if (mode === "break") {
-  //       setBreakCount((prev) => prev + 1);
-  //       setMode("long");
-  //       setTimeLeft(timerValues.long);
-  //     } else {
-  //       setLongBreakCount((prev) => prev + 1);
-  //       setMode("focus");
-  //       setTimeLeft(timerValues.focus);
-  //     }
-  //   }
-
-  // return () => clearInterval(interval);
-  // }, [running, timeLeft, mode, timerValues]);
-
     useEffect(() => {
       if (running && !endTime) {
         setEndTime(Date.now() + timeLeft * 1000);

@@ -16,14 +16,6 @@ html, body {
   color: #f3f4f6;
 }
 
-/* .app-title {
-  text-align: center;
-  font-size: 2.0rem;
-  font-weight: 600;
-  margin-bottom: 32px;
-  color: #f3f4f6;
-} */
-
 .app-title {
   text-align: center;
   font-size: clamp(1.1rem, 5vw, 2rem);
@@ -133,13 +125,6 @@ html, body {
   font-size: 0.9rem;
   margin-top: 8px;
 }
-
-/* .header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-} */
 
 .header-row {
   display: flex;
@@ -412,13 +397,6 @@ font-size:28px;
 font-weight:bold;
 }
 
-/* .circle-container{
-position:relative;
-width:260px;
-height:260px;
-margin:25px auto;
-} */
-
 .circle-container {
   position: relative;
   width: clamp(160px, 60vw, 260px);
@@ -432,12 +410,6 @@ margin:25px auto;
   transform: rotate(-90deg);
 }
 
-/* .progress-ring{
-transform:rotate(-90deg);
-} */
-
-
-
 .background-circle{
 fill:none;
 stroke:#e5e7eb;
@@ -449,16 +421,6 @@ stroke:#2563eb;
 stroke-linecap:round;
 transition:stroke-dashoffset 1s linear;
 }
-
-/* .time-text{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-font-size:46px;
-font-weight:bold;
-color:#1e293b;
-} */
 
 .time-text {
   position: absolute;
@@ -510,12 +472,6 @@ background:#15803d;
     margin: 0;
     padding: 12px;
   }
-
-  /* .header-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  } */
 
   .app-title {
     font-size: 1.5rem;
