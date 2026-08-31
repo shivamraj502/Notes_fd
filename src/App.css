@@ -132,7 +132,7 @@ html, body {
   align-items: center;
   flex-wrap: nowrap;
   gap: 10px;
-  margin-bottom: 0px;
+  margin-bottom: 4px;
 }
 
 .header-row .app-title {
