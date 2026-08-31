@@ -100,22 +100,55 @@ function Timer() {
       return () => clearInterval(interval);
     }, [running, endTime]);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   if (running && timeLeft === 0) {
+  //     playAlarm();
+  //     setRunning(false);
+  //     setEndTime(null);
+
+  //     if (mode === "focus") {
+  //       setFocusCount((prev) => prev + 1);
+  //       setMode("break");
+  //       setTimeLeft(timerValues.break);
+  //       notifyComplete("Focus session done!", "Time for a short break.");
+  //     } else if (mode === "break") {
+  //       setBreakCount((prev) => prev + 1);
+  //       setMode("long");
+  //       setTimeLeft(timerValues.long);
+  //       notifyComplete("Break's over!", "Time for a long break.");
+  //     } else {
+  //       setLongBreakCount((prev) => prev + 1);
+  //       setMode("focus");
+  //       setTimeLeft(timerValues.focus);
+  //       notifyComplete("Long break done!", "Back to focus mode.");
+  //     }
+  //   }
+  // }, [timeLeft, running, mode, timerValues]);
+
+    useEffect(() => {
     if (running && timeLeft === 0) {
       playAlarm();
       setRunning(false);
       setEndTime(null);
 
       if (mode === "focus") {
-        setFocusCount((prev) => prev + 1);
-        setMode("break");
-        setTimeLeft(timerValues.break);
-        notifyComplete("Focus session done!", "Time for a short break.");
+        const newFocusCount = focusCount + 1;
+        setFocusCount(newFocusCount);
+
+        if (newFocusCount % 4 === 0) {
+          setMode("long");
+          setTimeLeft(timerValues.long);
+          notifyComplete("4 sessions done!", "Time for a long break.");
+        } else {
+          setMode("break");
+          setTimeLeft(timerValues.break);
+          notifyComplete("Focus session done!", "Time for a short break.");
+        }
       } else if (mode === "break") {
         setBreakCount((prev) => prev + 1);
-        setMode("long");
-        setTimeLeft(timerValues.long);
-        notifyComplete("Break's over!", "Time for a long break.");
+        setMode("focus");
+        setTimeLeft(timerValues.focus);
+        notifyComplete("Break's over!", "Back to focus mode.");
       } else {
         setLongBreakCount((prev) => prev + 1);
         setMode("focus");
@@ -123,7 +156,7 @@ function Timer() {
         notifyComplete("Long break done!", "Back to focus mode.");
       }
     }
-  }, [timeLeft, running, mode, timerValues]);
+  }, [timeLeft, running, mode, timerValues, focusCount]);
 
   useEffect(() => {
     localStorage.setItem("timerValues", JSON.stringify(timerValues));
